@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 import Assign41.RestProject.model.Registration;
 import Assign41.RestProject.service.RegistrationService;
 
+
 @RestController
 public class RegistrationController {
 @Autowired
 private RegistrationService rs;
 
 @GetMapping("/registrations")
-public List<Registration> hadleget()
+public List<Registration> handleget()
 {
 	return rs.getAll();
 }
@@ -39,5 +40,10 @@ public void delr(@PathVariable("rid")int r)
 public Registration update(@PathVariable("rid")int i,@RequestBody Registration r)
 {
 	return rs.updaterecord(i,r);
+}
+@GetMapping("/login/{emailid}/{password}")
+public List<Registration> login (@PathVariable("emailid") String emailid, @PathVariable ("password") String password)
+{
+	return rs.Login(emailid, password);
 }
 }

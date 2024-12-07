@@ -53,6 +53,12 @@ if(opt.isPresent())
 }
 	return null;
 }
+
+@Override
+public List<Registration> Login(String emailid, String password) {
+	// TODO Auto-generated method stub
+	return regRepo.findAllByEmailidAndPassword(emailid, password);
+}
 }
 
  
